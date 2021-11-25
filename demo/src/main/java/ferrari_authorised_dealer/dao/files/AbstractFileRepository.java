@@ -1,4 +1,4 @@
-package ferrariAuthorisedDealer.dao.files;
+package ferrari_authorised_dealer.dao.files;
 
 import org.springframework.stereotype.Repository;
 

@@ -1,9 +1,9 @@
-package ferrariAuthorisedDealer.api.controller;
+package ferrari_authorised_dealer.api.controller;
 
 
-import ferrariAuthorisedDealer.business.ClientService;
-import ferrariAuthorisedDealer.business.EntityStateException;
-import ferrariAuthorisedDealer.domain.Client;
+import ferrari_authorised_dealer.business.ClientService;
+import ferrari_authorised_dealer.business.EntityStateException;
+import ferrari_authorised_dealer.domain.Client;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;

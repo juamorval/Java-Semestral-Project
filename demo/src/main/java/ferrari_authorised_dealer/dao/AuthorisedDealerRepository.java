@@ -1,6 +1,6 @@
-package ferrariAuthorisedDealer.dao;
+package ferrari_authorised_dealer.dao;
 
-import ferrariAuthorisedDealer.domain.AuthorisedDealer;
+import ferrari_authorised_dealer.domain.AuthorisedDealer;
 
 public interface AuthorisedDealerRepository extends AbstractCrudRepository <String, AuthorisedDealer>{
 

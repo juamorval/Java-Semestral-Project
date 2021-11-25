@@ -1,8 +1,7 @@
-package ferrariAuthorisedDealer.dao.jdbc;
+package ferrari_authorised_dealer.dao.jdbc;
 
-import ferrariAuthorisedDealer.dao.AuthorisedDealerRepository;
-import ferrariAuthorisedDealer.dao.files.AuthDealerFileRepository;
-import ferrariAuthorisedDealer.domain.AuthorisedDealer;
+import ferrari_authorised_dealer.dao.AuthorisedDealerRepository;
+import ferrari_authorised_dealer.domain.AuthorisedDealer;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -33,12 +32,7 @@ public class AuthDealerJdbcRepository implements AuthorisedDealerRepository {
 
     @Override
     public Collection<AuthorisedDealer> readAll() {
-        Statement s = connection.createStatement();
-        ResultSet r = s.executeQuery("SELECT * FROM wanillo");
-        var ret = new ArrayList<AuthorisedDealer>();
-        while(r.next()) {
-            ret.add(new AuthorisedDealer(r.getString("username")));
-        }
+
         return null;
     }
 

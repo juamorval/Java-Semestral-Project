@@ -1,6 +1,6 @@
-package ferrariAuthorisedDealer.dao.files;
+package ferrari_authorised_dealer.dao.files;
 
-import ferrariAuthorisedDealer.domain.Client;
+import ferrari_authorised_dealer.domain.Client;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,30 +1,41 @@
-package ferrariAuthorisedDealer.domain;
+package ferrari_authorised_dealer.domain;
 
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+@Entity
 public class Client {
 
-    private String name;
-    private String surname;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqC")
+    @SequenceGenerator(name = "seqC", sequenceName = "seqC", allocationSize = 1)
     private Integer id;
+    private String clientName;
+    private String surname;
+
     private String genre;
+
+    @ManyToMany
     private Collection<Seller> mn;
 
-    public Client(String name, String surname, Integer id, String genre, Collection<Seller> mn) {
-        this.name = name;
+    public Client(String clientName, String surname, Integer id, String genre, Collection<Seller> mn) {
+        this.clientName = clientName;
         this.surname = surname;
         this.id = id;
         this.genre = genre;
         this.mn = mn;
     }
 
+    public Client() {
+    }
+
     public String getName() {
-        return name;
+        return clientName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.clientName = name;
     }
 
     public String getSurname() {
@@ -75,7 +86,7 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" +
-                "name='" + name + '\'' +
+                "clientName='" + clientName + '\'' +
                 ", surname='" + surname + '\'' +
                 ", id='" + id + '\'' +
                 ", genre='" + genre + '\'' +

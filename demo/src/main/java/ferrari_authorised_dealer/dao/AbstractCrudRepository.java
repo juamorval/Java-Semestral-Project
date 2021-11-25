@@ -1,4 +1,4 @@
-package ferrariAuthorisedDealer.dao;
+package ferrari_authorised_dealer.dao;
 
 import java.util.Collection;
 import java.util.Optional;

@@ -18,7 +18,6 @@ public abstract class AbstractCrudService <K, E>{
             throw new EntityStateException(null);
         repository.createOrUpdate(element);
 
-
     }
 
     public void update(E element) throws EntityStateException {

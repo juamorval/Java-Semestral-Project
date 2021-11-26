@@ -22,7 +22,12 @@ public class AuthorisedDealerController {
 
     @PostMapping("/authorisedDealer")
     public void create(@RequestBody AuthorisedDealer authorisedDealer) throws EntityStateException {
-        authorisedDealerService.create(authorisedDealer);
+        try {
+            authorisedDealerService.create(authorisedDealer);
+        } catch(NoSuchElementException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
     }
 
     @GetMapping("/authorisedDealer")
@@ -41,12 +46,24 @@ public class AuthorisedDealerController {
 
     @PutMapping("/authorisedDealer/{id}")
     public void update(@PathVariable String id, @RequestBody AuthorisedDealer authorisedDealer) throws EntityStateException {
-        authorisedDealerService.update(authorisedDealer);
+        //If users exists
+        try {
+            authorisedDealerService.update(authorisedDealer);
+        } catch (NoSuchElementException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
+
     }
 
     @DeleteMapping("/authorisedDealer/{id}")
     public void delete(@PathVariable String id) {
-        authorisedDealerService.deleteById(id);
+        try {
+            authorisedDealerService.deleteById(id);
+        } catch(NoSuchElementException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
     }
 
 

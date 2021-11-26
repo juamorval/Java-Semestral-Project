@@ -1,0 +1,16 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - "SPRING_DATASOURCE_URL=jdbc:postgresql://project_db_compose/postgres"
+      - "SPRING_DATASOURCE_USERNAME=progres"
+      - "SPRING_DATASOURCE_PASSWORD=juanmi"
+  postgres:
+    image: postgres:alpine
+    container_name: project_db_compose
+    environment:
+      POSTGRES_PASSWORD: juanmi

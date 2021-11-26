@@ -15,9 +15,11 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	runtimeOnly 'org.hsqldb:hsqldb'
+
+	testRuntimeOnly 'org.hsqldb:hsqldb'
 	//implementation 'org.springframework.boot:spring-boot-starter-test'
 
+	runtimeOnly 'org.postgresql:postgresql'
 }
 
 //test {

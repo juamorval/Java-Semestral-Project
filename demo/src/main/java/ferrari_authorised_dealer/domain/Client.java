@@ -8,15 +8,15 @@ import java.util.Objects;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqC")
-    @SequenceGenerator(name = "seqC", sequenceName = "seqC", allocationSize = 1)
+    @GeneratedValue//(strategy = GenerationType.SEQUENCE, generator = "seqC")
+    //@SequenceGenerator(name = "seqC", sequenceName = "seqC", allocationSize = 1)
     private Integer id;
     private String clientName;
     private String surname;
 
     private String genre;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "Seller")
     private Collection<Seller> mn;
 
     public Client(String clientName, String surname, Integer id, String genre, Collection<Seller> mn) {

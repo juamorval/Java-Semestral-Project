@@ -14,7 +14,7 @@ public class Seller {
     private String sellerName;
     private String surname;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "Client")
     private Collection<Client> mn;
 
     public Seller(String sellerName, String surname, Integer number, Collection<Client> mn) {

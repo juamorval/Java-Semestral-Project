@@ -11,6 +11,7 @@ public class AuthorisedDealer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
     @SequenceGenerator(name = "seq", sequenceName = "seq", allocationSize = 1)
     private Integer id;
+
     private String name;
 
     @OneToMany(mappedBy = "sellerName")

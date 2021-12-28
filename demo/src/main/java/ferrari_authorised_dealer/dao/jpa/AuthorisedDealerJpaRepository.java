@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import java.util.Collection;
 import java.util.Optional;
 
-public class AuthorisedDealerJpaRepository extends AuthorisedDealerRepository {
+public class AuthorisedDealerJpaRepository implements AuthorisedDealerRepository {
     private final EntityManager entityManager;
 
     public AuthorisedDealerJpaRepository(EntityManager entityManager) {

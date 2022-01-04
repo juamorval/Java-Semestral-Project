@@ -13,4 +13,4 @@ services:
     image: postgres:alpine
     container_name: project_db_compose
     environment:
-      POSTGRES_PASSWORD: juanmi
+      - "POSTGRES_PASSWORD: juanmi"

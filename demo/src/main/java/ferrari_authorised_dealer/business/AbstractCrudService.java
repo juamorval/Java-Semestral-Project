@@ -2,6 +2,7 @@ package ferrari_authorised_dealer.business;
 
 import ferrari_authorised_dealer.dao.files.AbstractFileRepository;
 import java.util.Collection;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public abstract class AbstractCrudService <K, E>{
@@ -15,7 +16,7 @@ public abstract class AbstractCrudService <K, E>{
     //CRUD
     public void create(E element) throws EntityStateException {
         if(repository.exists(element))
-            throw new EntityStateException(null);
+            throw new EntityStateException(element);
         repository.createOrUpdate(element);
 
     }
@@ -24,7 +25,7 @@ public abstract class AbstractCrudService <K, E>{
         if(repository.exists(element))
             repository.createOrUpdate(element);
         else
-            throw new EntityStateException(null);
+            throw new EntityStateException(element);
     }
 
     public Collection<E> readAll() {
@@ -36,7 +37,12 @@ public abstract class AbstractCrudService <K, E>{
     }
 
     public void deleteById(String id) {
-        repository.deleteById(id);
+        if(repository.readById((K) id).isEmpty()) {
+            repository.deleteById(id);
+        } else {
+            throw new NoSuchElementException();
+        }
+
     }
 
 }

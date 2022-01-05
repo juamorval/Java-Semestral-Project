@@ -1,5 +1,7 @@
 package ferrari_authorised_dealer.domain;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -11,6 +13,7 @@ public class AuthorisedDealer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
     @SequenceGenerator(name = "seq", sequenceName = "seq", allocationSize = 1)
     private Integer id;
+
 
     private String name;
 

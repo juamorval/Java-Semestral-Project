@@ -16,7 +16,7 @@ public class Client {
 
     private String genre;
 
-    @ManyToMany(mappedBy = "Seller")
+    @ManyToMany(mappedBy = "clients")
     private Collection<Seller> mn;
 
     public Client(String clientName, String surname, Integer id, String genre, Collection<Seller> mn) {

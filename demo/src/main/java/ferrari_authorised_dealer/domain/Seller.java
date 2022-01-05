@@ -14,14 +14,14 @@ public class Seller {
     private String sellerName;
     private String surname;
 
-    @ManyToMany(mappedBy = "Client")
-    private Collection<Client> mn;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Collection<Client> clients;
 
-    public Seller(String sellerName, String surname, Integer number, Collection<Client> mn) {
+    public Seller(String sellerName, String surname, Integer number, Collection<Client> clients) {
         this.sellerName = sellerName;
         this.surname = surname;
         this.number = number;
-        this.mn = mn;
+        this.clients = clients;
     }
 
     public Seller() {
@@ -51,12 +51,12 @@ public class Seller {
         this.number = number;
     }
 
-    public Collection<Client> getMn() {
-        return mn;
+    public Collection<Client> getClients() {
+        return clients;
     }
 
-    public void setMn(Collection<Client> mn) {
-        this.mn = mn;
+    public void setClients(Collection<Client> clients) {
+        this.clients = clients;
     }
 
     @Override
@@ -78,7 +78,7 @@ public class Seller {
                 "sellerName='" + sellerName + '\'' +
                 ", surname='" + surname + '\'' +
                 ", number=" + number +
-                ", mn=" + mn +
+                ", clients=" + clients +
                 '}';
     }
 }

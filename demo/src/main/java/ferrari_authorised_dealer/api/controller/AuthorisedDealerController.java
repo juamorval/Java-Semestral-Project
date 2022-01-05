@@ -1,5 +1,7 @@
 package ferrari_authorised_dealer.api.controller;
 
+import ferrari_authorised_dealer.api.converter.Converter;
+import ferrari_authorised_dealer.api.dto.AuthorisedDealerDto;
 import ferrari_authorised_dealer.business.AuthorisedDealerService;
 import ferrari_authorised_dealer.business.EntityStateException;
 import ferrari_authorised_dealer.domain.AuthorisedDealer;
@@ -9,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @RestController
 public class AuthorisedDealerController {
@@ -21,9 +24,9 @@ public class AuthorisedDealerController {
 
 
     @PostMapping("/authorisedDealer")
-    public void create(@RequestBody AuthorisedDealer authorisedDealer) throws EntityStateException {
+    public void create(@RequestBody AuthorisedDealerDto authorisedDealer) throws EntityStateException {
         try {
-            authorisedDealerService.create(authorisedDealer);
+            authorisedDealerService.create(Converter.fromDto(authorisedDealer));
         } catch(NoSuchElementException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
@@ -31,24 +34,24 @@ public class AuthorisedDealerController {
     }
 
     @GetMapping("/authorisedDealer")
-    public Collection<AuthorisedDealer> readAll() {
-        return authorisedDealerService.readAll();
+    public Collection<AuthorisedDealerDto> readAll() {
+        return authorisedDealerService.readAll().stream()
+                .map(Converter::toDto).collect(Collectors.toList());
     }
 
     @GetMapping("/authorisedDealer/{id}")
-    public AuthorisedDealer readById(@PathVariable String id) {
+    public AuthorisedDealerDto readById(@PathVariable String id) {
         try {
-            return authorisedDealerService.readById(id).orElseThrow();
+            return Converter.toDto(authorisedDealerService.readById(id).orElseThrow());
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
 
     @PutMapping("/authorisedDealer/{id}")
-    public void update(@PathVariable String id, @RequestBody AuthorisedDealer authorisedDealer) throws EntityStateException {
-        //If users exists
+    public void update(@PathVariable String id, @RequestBody AuthorisedDealerDto authorisedDealer) throws EntityStateException {
         try {
-            authorisedDealerService.update(authorisedDealer);
+            authorisedDealerService.update(Converter.fromDto(authorisedDealer));
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }

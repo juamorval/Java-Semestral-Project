@@ -9,7 +9,6 @@ import java.util.Optional;
 @Repository
 public abstract class AbstractFileRepository<K, E> {
 
-
     public abstract K element(E element);
 
     //CRUD

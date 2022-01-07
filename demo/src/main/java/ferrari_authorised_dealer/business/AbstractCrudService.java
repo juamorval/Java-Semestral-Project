@@ -1,6 +1,8 @@
 package ferrari_authorised_dealer.business;
 
 import ferrari_authorised_dealer.dao.files.AbstractFileRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.Collection;
 import java.util.NoSuchElementException;
 import java.util.Optional;
